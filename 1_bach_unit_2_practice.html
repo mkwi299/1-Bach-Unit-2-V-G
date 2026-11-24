@@ -1,0 +1,2516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit 2 · Grammar &amp; Vocabulary — Práctica 1.º Bachillerato</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --border: #dce3ec;
+      --border-strong: #cbd5e1;
+      --text: #1e293b;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      --primary: #1d4ed8;
+      --primary-hover: #1e40af;
+      --primary-soft: #eff6ff;
+      --primary-border: #bfdbfe;
+      --success: #047857;
+      --success-bg: #ecfdf5;
+      --success-border: #a7f3d0;
+      --error: #b91c1c;
+      --error-bg: #fef2f2;
+      --error-border: #fecaca;
+      --warning: #b45309;
+      --warning-bg: #fffbeb;
+      --warning-border: #fde68a;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Utility */
+    .hidden {
+      display: none !important;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 10px 18px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      font-family: inherit;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color 0.16s ease, border-color 0.16s ease, transform 0.08s ease, box-shadow 0.16s ease;
+      text-decoration: none;
+      line-height: 1.25;
+      user-select: none;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(29, 78, 216, 0.22);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-secondary {
+      background-color: var(--surface);
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background-color: var(--surface-alt);
+      border-color: #94a3b8;
+    }
+
+    .btn-soft {
+      background-color: var(--primary-soft);
+      color: var(--primary);
+      border-color: var(--primary-border);
+    }
+
+    .btn-soft:hover:not(:disabled) {
+      background-color: #dbeafe;
+    }
+
+    .btn-warning {
+      background-color: var(--warning-bg);
+      color: var(--warning);
+      border-color: var(--warning-border);
+    }
+
+    .btn-warning:hover:not(:disabled) {
+      background-color: #fef3c7;
+    }
+
+    .btn-sm {
+      min-height: 38px;
+      padding: 7px 13px;
+      font-size: 0.88rem;
+    }
+
+    /* Top Sticky Bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .topbar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 4px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    .student-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      border: 1px solid var(--border-strong);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .topbar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 4px 10px 4px 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .timer-pill.timer-ended {
+      background: var(--warning-bg);
+      border-color: var(--warning-border);
+      color: var(--warning);
+    }
+
+    .timer-display {
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .timer-toggle {
+      background: #ffffff;
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 28px;
+    }
+
+    .timer-toggle:hover {
+      background: var(--primary-soft);
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    /* Global Progress Bar */
+    .global-progress-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 16px 10px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), #0d9488);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    /* Welcome Screen */
+    .welcome-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      margin: 24px auto 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .welcome-card h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.25;
+      color: #0f172a;
+    }
+
+    .welcome-lead {
+      margin: 0 0 20px;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    .instructions-box {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 22px;
+    }
+
+    .instructions-box h2 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: #0f172a;
+    }
+
+    .instructions-box ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .instructions-box li + li {
+      margin-top: 6px;
+    }
+
+    /* Student Identification Box */
+    .student-id-box {
+      background: #ffffff;
+      border: 2px solid var(--primary-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.06);
+    }
+
+    .student-id-box h3 {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .student-id-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .field-label span {
+      color: var(--error);
+    }
+
+    .input-error-msg {
+      font-size: 0.84rem;
+      color: var(--error);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .blocks-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .overview-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .overview-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .block-num-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .time-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .overview-item h3 {
+      margin: 4px 0 2px;
+      font-size: 0.98rem;
+      color: #0f172a;
+    }
+
+    .overview-item p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--text-light);
+    }
+
+    .welcome-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* Practice Screen */
+    .practice-wrap {
+      padding: 18px 0 48px;
+    }
+
+    .retry-banner {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.93rem;
+      font-weight: 600;
+    }
+
+    .block-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+      scrollbar-width: thin;
+    }
+
+    .block-tab {
+      flex: 1 0 auto;
+      min-width: 145px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .block-tab:hover {
+      border-color: var(--primary-border);
+      background: var(--surface-alt);
+    }
+
+    .block-tab.active {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      box-shadow: 0 0 0 1px var(--primary);
+    }
+
+    .block-tab-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 2px;
+    }
+
+    .block-tab.active .block-tab-header {
+      color: var(--primary);
+    }
+
+    .block-tab-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 185px;
+    }
+
+    .block-header-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .block-header-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .block-header-card h2 {
+      margin: 0 0 6px;
+      font-size: 1.3rem;
+      color: #0f172a;
+    }
+
+    .block-instruction {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .word-bank {
+      margin-top: 14px;
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+
+    .word-bank-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .word-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .word-chip {
+      background: #ffffff;
+      border: 1px solid var(--primary-border);
+      color: #1e3a8a;
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 4px 11px;
+      border-radius: 6px;
+    }
+
+    /* Questions List */
+    .questions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .question-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease;
+    }
+
+    .question-card.state-correct {
+      border-color: var(--success-border);
+      border-left: 5px solid var(--success);
+    }
+
+    .question-card.state-incorrect {
+      border-color: var(--error-border);
+      border-left: 5px solid var(--error);
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .q-number {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .q-type-tag {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .q-prompt {
+      font-size: 1.03rem;
+      color: #0f172a;
+      margin: 0 0 14px;
+      line-height: 1.6;
+    }
+
+    .q-original-sentence {
+      background: var(--surface-alt);
+      border-left: 3px solid var(--border-strong);
+      padding: 9px 12px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 10px;
+      font-size: 0.96rem;
+      color: var(--text);
+    }
+
+    .q-hint {
+      display: inline-block;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .mc-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .mc-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 10px 14px;
+      background: var(--surface-alt);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--text);
+      text-align: left;
+      transition: all 0.14s ease;
+    }
+
+    .mc-option:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .mc-option.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      color: #1e3a8a;
+      font-weight: 600;
+    }
+
+    .mc-option.opt-correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .mc-option.opt-incorrect {
+      border-color: var(--error);
+      background: var(--error-bg);
+      color: var(--error);
+      font-weight: 600;
+    }
+
+    .mc-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid var(--border-strong);
+      font-size: 0.82rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .mc-option.selected .mc-letter {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .mc-option.opt-correct .mc-letter {
+      background: var(--success);
+      color: #ffffff;
+      border-color: var(--success);
+    }
+
+    .mc-option.opt-incorrect .mc-letter {
+      background: var(--error);
+      color: #ffffff;
+      border-color: var(--error);
+    }
+
+    .written-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: stretch;
+      margin-bottom: 10px;
+    }
+
+    .text-input {
+      flex: 1 1 240px;
+      min-height: 48px;
+      padding: 10px 14px;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--text);
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .text-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.14);
+    }
+
+    .text-input.input-correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .text-input.input-incorrect {
+      border-color: var(--error);
+      background: var(--error-bg);
+    }
+
+    .question-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feedback-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    .feedback-box.correct {
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: #065f46;
+    }
+
+    .feedback-box.incorrect {
+      background: var(--error-bg);
+      border: 1px solid var(--error-border);
+      color: #991b1b;
+    }
+
+    .feedback-title {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .model-answer {
+      display: inline-block;
+      margin: 4px 0 6px;
+      padding: 3px 9px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .block-footer {
+      margin-top: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .block-nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Results Screen */
+    .results-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      margin: 24px auto 48px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .results-hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 22px;
+    }
+
+    .score-circle {
+      background: var(--primary-soft);
+      border: 2px solid var(--primary-border);
+      border-radius: var(--radius-md);
+      padding: 16px 22px;
+      text-align: center;
+      min-width: 170px;
+    }
+
+    .score-big {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .score-sub {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .results-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+
+    .results-table th,
+    .results-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .results-table th {
+      background: var(--surface-alt);
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .mini-bar {
+      width: 110px;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .mini-bar-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 999px;
+    }
+
+    .results-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Printable Worksheet (Hidden on Screen) */
+    #print-worksheet {
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        padding: 8px 12px;
+      }
+      .brand-title {
+        font-size: 0.9rem;
+      }
+      .question-card {
+        padding: 15px 14px;
+      }
+      .mc-options {
+        grid-template-columns: 1fr;
+      }
+      .welcome-card,
+      .results-card {
+        padding: 20px 16px;
+        margin-top: 14px;
+      }
+    }
+
+    /* PRINT STYLESHEET */
+    @media print {
+      @page {
+        size: A4;
+        margin: 14mm 15mm;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+        font-size: 10.5pt;
+        line-height: 1.45;
+      }
+
+      #app-shell {
+        display: none !important;
+      }
+
+      #print-worksheet {
+        display: block !important;
+        width: 100%;
+      }
+
+      .print-header {
+        border-bottom: 2px solid #111827;
+        padding-bottom: 8px;
+        margin-bottom: 14px;
+      }
+
+      .print-header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+      }
+
+      .print-header h1 {
+        font-size: 14pt;
+        margin: 0;
+        color: #000000;
+      }
+
+      .print-meta-tag {
+        font-size: 9.5pt;
+        font-weight: 700;
+        color: #374151;
+      }
+
+      .print-student-fields {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 9.5pt;
+        margin-top: 6px;
+      }
+
+      .print-block {
+        margin-bottom: 16px;
+      }
+
+      .print-block-header {
+        border-bottom: 1px solid #9ca3af;
+        padding-bottom: 4px;
+        margin-bottom: 8px;
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      .print-block-header h2 {
+        font-size: 11.5pt;
+        margin: 0 0 2px;
+        color: #000000;
+      }
+
+      .print-block-inst {
+        font-size: 9.5pt;
+        color: #374151;
+        margin: 0;
+      }
+
+      .print-wordbank {
+        border: 1px solid #6b7280;
+        padding: 5px 10px;
+        margin: 6px 0 10px;
+        font-size: 9.5pt;
+        font-weight: 600;
+        background: #ffffff;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .print-question {
+        margin-bottom: 9px;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .print-q-text {
+        margin: 0 0 3px;
+      }
+
+      .print-q-orig {
+        margin: 0 0 2px 14px;
+        font-style: italic;
+        color: #1f2937;
+      }
+
+      .print-mc-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-left: 16px;
+        font-size: 9.8pt;
+      }
+
+      .print-write-line {
+        margin: 4px 0 2px 16px;
+        border-bottom: 1px solid #4b5563;
+        height: 18px;
+        width: 88%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WEB APP SHELL -->
+  <div id="app-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="brand-badge">1.º BACH</span>
+          <span class="brand-title">Unit 2 · Grammar &amp; Vocabulary</span>
+          <div class="student-badge hidden" id="topbar-student-badge">
+            <span>👤</span>
+            <span id="topbar-student-name"></span>
+          </div>
+        </div>
+
+        <div class="topbar-controls">
+          <div class="timer-pill" id="timer-pill" title="Temporizador orientativo de 40 minutos">
+            <span>⏱</span>
+            <span class="timer-display" id="timer-display">40:00</span>
+            <button type="button" class="timer-toggle" id="timer-toggle-btn">Pausar</button>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-home-nav" title="Volver a la portada">
+            Inicio
+          </button>
+          <button type="button" class="btn btn-soft btn-sm" onclick="window.print()">
+            Imprimir o guardar como PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="global-progress-wrap" id="global-progress-wrap">
+        <div class="progress-meta">
+          <span id="progress-label">Progreso: 0 / 42 respondidas</span>
+          <span id="score-live-label">Aciertos: 0</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- SCREEN 1: WELCOME -->
+      <section id="screen-welcome" class="welcome-card">
+        <span class="eyebrow">1.º de Bachillerato · Práctica de aula (~40 minutos)</span>
+        <h1>Repaso de la Unidad 2: Vocabulario y Formas de Futuro</h1>
+        <p class="welcome-lead">
+          Actividad interactiva para repasar colocaciones, phrasal verbs, léxico temático y tiempos verbales de futuro con contextos completamente nuevos.
+        </p>
+
+        <div class="instructions-box">
+          <h2>Instrucciones breves</h2>
+          <ul>
+            <li>La práctica se divide en <strong>5 bloques</strong> diseñados para completarse en unos <strong>40 minutos</strong>. Puedes navegar libremente entre bloques.</li>
+            <li>Encontrarás preguntas de <strong>selección múltiple</strong> y de <strong>respuesta escrita</strong>. Al comprobar cada ítem recibirás una explicación inmediata.</li>
+            <li>El temporizador superior es de orientación: puedes pausarlo en cualquier momento y no bloqueará la actividad si llega a <code>00:00</code>.</li>
+            <li>Al finalizar verás tu resumen y podrás <strong>repetir únicamente las preguntas incorrectas</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="blocks-overview" id="welcome-blocks-overview"></div>
+
+        <!-- Student Identification Form Block -->
+        <div class="student-id-box">
+          <h3>👤 Identificación del alumno / alumna</h3>
+          <div class="student-id-grid">
+            <div class="field-group">
+              <label class="field-label" for="student-name-input">Nombre y apellidos <span>*</span></label>
+              <input
+                type="text"
+                id="student-name-input"
+                class="text-input"
+                placeholder="Escribe tu nombre y apellidos..."
+                required
+                autocomplete="name"
+              />
+              <div id="name-error-msg" class="input-error-msg hidden">
+                Debes escribir tu nombre y apellidos para poder comenzar los ejercicios.
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="student-group-input">Grupo / Curso</label>
+              <input
+                type="text"
+                id="student-group-input"
+                class="text-input"
+                placeholder="Ej. 1.º Bachillerato A"
+                value="1.º Bachillerato"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-actions">
+          <button type="button" class="btn btn-primary" id="btn-start-practice">
+            Comenzar práctica
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="window.print()">
+            Imprimir o guardar como PDF
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: PRACTICE BLOCKS -->
+      <section id="screen-practice" class="practice-wrap hidden">
+        <div id="retry-banner" class="retry-banner hidden">
+          <span id="retry-banner-text">Modo de repaso activo: mostrando únicamente las preguntas incorrectas.</span>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-exit-retry">
+            Volver a todos los ejercicios
+          </button>
+        </div>
+
+        <nav class="block-tabs" id="block-tabs" aria-label="Navegación por bloques"></nav>
+
+        <div class="block-header-card" id="block-header-card"></div>
+
+        <div class="questions-list" id="questions-list"></div>
+
+        <div class="block-footer">
+          <button type="button" class="btn btn-soft" id="btn-check-block">
+            Comprobar todo el bloque
+          </button>
+          <div class="block-nav-group">
+            <button type="button" class="btn btn-secondary" id="btn-prev-block">
+              ← Bloque anterior
+            </button>
+            <button type="button" class="btn btn-primary" id="btn-next-block">
+              Siguiente bloque →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: RESULTS -->
+      <section id="screen-results" class="results-card hidden">
+        <div class="results-hero">
+          <div>
+            <span class="eyebrow">Resultados finales · Unidad 2</span>
+            <h2 style="margin: 0 0 4px; font-size: 1.55rem;" id="results-student-display">Resumen de tu práctica</h2>
+            <p style="margin: 0 0 10px; font-size: 0.95rem; font-weight: 600; color: var(--primary);" id="results-group-display"></p>
+            <p style="margin: 0; color: var(--text-muted);" id="results-subtitle">
+              Revisa tu rendimiento global y por bloques.
+            </p>
+          </div>
+          <div class="score-circle">
+            <div class="score-big" id="final-score-main">0 / 42</div>
+            <div class="score-sub" id="final-score-sub">0% · Nota orientativa: 0,0 / 10</div>
+          </div>
+        </div>
+
+        <div class="results-table-wrap">
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>Bloque</th>
+                <th>Aciertos</th>
+                <th>Rendimiento</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="results-table-body"></tbody>
+          </table>
+        </div>
+
+        <div class="results-actions">
+          <button type="button" class="btn btn-warning" id="btn-retry-incorrect">
+            Repetir preguntas incorrectas
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-back-to-blocks">
+            Revisar ejercicios
+          </button>
+          <button type="button" class="btn btn-soft" onclick="window.print()">
+            Imprimir o guardar como PDF
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-reset-all">
+            Reiniciar toda la práctica
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- PRINTABLE BACKUP WORKSHEET -->
+  <section id="print-worksheet" aria-label="Versión imprimible de la práctica"></section>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* =========================================================================
+         EXACT QUESTION BANK (42 ORIGINAL QUESTIONS)
+      ========================================================================= */
+      const BLOCKS = [
+        {
+          id: "block-1",
+          shortTitle: "1. Colocaciones",
+          title: "Bloque 1: Expresiones y colocaciones",
+          duration: "7 min",
+          summary: "Formación de expresiones con adjetivos y modificadores.",
+          instruction: "Completa cada oración con el adjetivo o modificador adecuado para formar una colocación natural en inglés.",
+          wordBankLabel: "Banco de palabras",
+          wordBank: ["deadly", "friendly", "highly", "vast", "cutting", "heavy", "perfect"],
+          questions: [
+            {
+              id: "b1_q1",
+              type: "mc",
+              prompt: "When the theatre director said we would have to rehearse until midnight, we laughed, until we saw his face and realised he was _______ serious.",
+              options: ["deadly", "heavy", "vast", "highly"],
+              answer: "deadly",
+              explanation: "La colocación fija es <strong>deadly serious</strong> (completamente / muy en serio)."
+            },
+            {
+              id: "b1_q2",
+              type: "mc",
+              prompt: "The new municipal museum showcases _______-edge prototypes of solar-powered aircraft.",
+              options: ["heavy", "cutting", "perfect", "deadly"],
+              answer: "cutting",
+              explanation: "<strong>Cutting-edge</strong> significa de última generación, puntero o muy innovador."
+            },
+            {
+              id: "b1_q3",
+              type: "mc",
+              prompt: "Although the forecast predicted sunshine, the outdoor charity concert had to be postponed because of _______ rain.",
+              options: ["vast", "deadly", "heavy", "highly"],
+              answer: "heavy",
+              explanation: "En inglés, la lluvia intensa se expresa mediante la colocación <strong>heavy rain</strong>."
+            },
+            {
+              id: "b1_q4",
+              type: "mc",
+              prompt: "The _______ majority of commuters in our city now use rechargeable travel cards instead of paper tickets.",
+              options: ["vast", "cutting", "perfect", "friendly"],
+              answer: "vast",
+              explanation: "<strong>The vast majority</strong> equivale a la inmensa mayoría."
+            },
+            {
+              id: "b1_q5",
+              type: "mc",
+              prompt: "Given the severe snowstorm blocking the mountain pass, it is _______ unlikely that the courier van will arrive tonight.",
+              options: ["deadly", "perfect", "highly", "heavy"],
+              answer: "highly",
+              explanation: "El intensificador habitual antes de unlikely es <strong>highly</strong> (<strong>highly unlikely</strong> = highly improbable)."
+            },
+            {
+              id: "b1_q6",
+              type: "written",
+              prompt: "The graphic designers simplified the navigation menu so that the online archive would be much more user-_______ for older visitors.",
+              hint: "Pista: Escribe una sola palabra del banco de palabras.",
+              placeholder: "Escribe la palabra que falta...",
+              accepted: ["friendly"],
+              model: "friendly (user-friendly)",
+              explanation: "<strong>User-friendly</strong> significa fácil de usar o intuitivo."
+            },
+            {
+              id: "b1_q7",
+              type: "written",
+              prompt: "With her calm leadership and his analytical mind, Clara and Hugo proved to be a _______ match when organising the science fair.",
+              hint: "Pista: Escribe una sola palabra del banco de palabras.",
+              placeholder: "Escribe la palabra que falta...",
+              accepted: ["perfect"],
+              model: "perfect (a perfect match)",
+              explanation: "<strong>A perfect match</strong> describe a dos personas o elementos que encajan a la perfección."
+            },
+            {
+              id: "b1_q8",
+              type: "written",
+              prompt: "We left twenty minutes early because we knew there would be _______ traffic on the ring road at rush hour.",
+              hint: "Pista: Escribe una sola palabra del banco de palabras.",
+              placeholder: "Escribe la palabra que falta...",
+              accepted: ["heavy"],
+              model: "heavy (heavy traffic)",
+              explanation: "El tráfico denso o intenso se expresa con la colocación <strong>heavy traffic</strong>."
+            }
+          ]
+        },
+        {
+          id: "block-2",
+          shortTitle: "2. Phrasal Verbs",
+          title: "Bloque 2: Phrasal verbs en contextos nuevos",
+          duration: "7 min",
+          summary: "Uso de give, keep, get, back y speak con in, out, on, over y up.",
+          instruction: "Deduce el phrasal verb adecuado según el contexto. En las preguntas escritas, conjuga el verbo cuando se indique.",
+          wordBankLabel: "Banco: back up, get over, give in, keep on, speak out (Verbos: back · get · give · keep · speak | Partículas: in · on · out · over · up)",
+          wordBank: ["back up", "get over", "give in", "keep on", "speak out"],
+          questions: [
+            {
+              id: "b2_q1",
+              type: "mc",
+              prompt: "Before lending her tablet to her cousin, Sofía made sure to _______ all her photographs and notes onto an external drive.",
+              options: ["back up", "give in", "get over", "speak out"],
+              answer: "back up",
+              explanation: "<strong>Back up</strong> significa hacer una copia de seguridad de archivos o datos."
+            },
+            {
+              id: "b2_q2",
+              type: "mc",
+              prompt: "Even though the mountain trail became steep and muddy, the hikers decided to _______ walking until they reached the refuge.",
+              options: ["give in", "keep on", "back up", "get over"],
+              answer: "keep on",
+              explanation: "<strong>Keep on (+ -ing)</strong> significa seguir o continuar haciendo algo."
+            },
+            {
+              id: "b2_q3",
+              type: "mc",
+              prompt: "Several neighbourhood associations have started to _______ against the plan to demolish the historic botanical garden.",
+              options: ["get over", "back up", "speak out", "give in"],
+              answer: "speak out",
+              explanation: "<strong>Speak out</strong> significa expresar una opinión públicamente o alzar la voz."
+            },
+            {
+              id: "b2_q4",
+              type: "mc",
+              prompt: "The negotiations lasted all night, but the workers refused to _______ to unfair contract conditions.",
+              options: ["give in", "keep on", "speak out", "back up"],
+              answer: "give in",
+              explanation: "<strong>Give in (to)</strong> significa ceder o rendirse ante una presión o exigencia."
+            },
+            {
+              id: "b2_q5",
+              type: "written",
+              prompt: "It took Mateo nearly three weeks to ____________ the bad flu he caught during the winter camp.",
+              hint: "Pista: Completa con el phrasal verb adecuado en infinitivo (verbo + partícula).",
+              placeholder: "verbo + partícula...",
+              accepted: ["get over"],
+              model: "get over",
+              explanation: "<strong>Get over</strong> significa recuperarse de una enfermedad o superar un contratiempo."
+            },
+            {
+              id: "b2_q6",
+              type: "written",
+              prompt: "When the debate turned heated, Elena ____________ her teammate's argument with solid statistical evidence.",
+              hint: "Pista: Usa el phrasal verb adecuado en Past Simple (verbo en pasado + partícula).",
+              placeholder: "verbo en pasado + partícula...",
+              accepted: ["backed up"],
+              model: "backed up",
+              explanation: "<strong>Back up</strong> también significa respaldar o apoyar un argumento. En Past Simple: <strong>backed up</strong>."
+            },
+            {
+              id: "b2_q7",
+              type: "written",
+              prompt: "Despite losing the first two sets, the young tennis player ____________ fighting for every single point until she won.",
+              hint: "Pista: Usa el phrasal verb adecuado en Past Simple (verbo irregular en pasado + partícula).",
+              placeholder: "verbo en pasado + partícula...",
+              accepted: ["kept on"],
+              model: "kept on",
+              explanation: "<strong>Keep on</strong> = continuar. El pasado irregular de <em>keep</em> es <strong>kept</strong> (<strong>kept on</strong>)."
+            }
+          ]
+        },
+        {
+          id: "block-3",
+          shortTitle: "3. Vocabulario temático",
+          title: "Bloque 3: Aficiones, tecnología, habilidades y cambio",
+          duration: "6 min",
+          summary: "Uso contextual de evolving, gifted, meaningful, chance, gaming, device, equipped with y browse.",
+          instruction: "Lee con atención cada contexto y selecciona o escribe la palabra o expresión del banco que encaja por significado.",
+          wordBankLabel: "Banco de vocabulario",
+          wordBank: ["evolving", "gifted", "meaningful", "chance", "gaming", "device", "equipped with", "browse"],
+          questions: [
+            {
+              id: "b3_q1",
+              type: "mc",
+              prompt: "Unlike passive television viewing, cooperative _______ requires players to communicate rapidly and coordinate strategies in real time.",
+              options: ["gaming", "device", "chance", "browse"],
+              answer: "gaming",
+              explanation: "<strong>Gaming</strong> hace referencia a los videojuegos como actividad o afición interactiva."
+            },
+            {
+              id: "b3_q2",
+              type: "mc",
+              prompt: "By age thirteen, Amira was already a _______ violinist who had performed solo concertos with two regional orchestras.",
+              options: ["evolving", "gifted", "meaningful", "equipped with"],
+              answer: "gifted",
+              explanation: "<strong>Gifted</strong> describe a alguien con un talento natural excepcional."
+            },
+            {
+              id: "b3_q3",
+              type: "mc",
+              prompt: "Volunteering at the community repair café gave Lucas a _______ way to apply his electronics knowledge while helping neighbours.",
+              options: ["meaningful", "gaming", "evolving", "device"],
+              answer: "meaningful",
+              explanation: "<strong>Meaningful</strong> significa significativo, valioso o con un propósito claro."
+            },
+            {
+              id: "b3_q4",
+              type: "mc",
+              prompt: "Because battery engineering and artificial intelligence are constantly _______, smartphones from five years ago already feel outdated.",
+              options: ["gifted", "evolving", "equipped with", "chance"],
+              answer: "evolving",
+              explanation: "<strong>Evolving</strong> (en constante evolución o desarrollo) expresa cambio continuo."
+            },
+            {
+              id: "b3_q5",
+              type: "written",
+              prompt: "Before choosing a university degree, Nadia spent weeks using her laptop to ____________ online course syllabuses and student forums.",
+              hint: "Pista: Escribe una palabra del banco de vocabulario.",
+              placeholder: "Escribe la palabra...",
+              accepted: ["browse"],
+              model: "browse",
+              explanation: "<strong>Browse</strong> significa explorar, navegar o ojear páginas web o catálogos."
+            },
+            {
+              id: "b3_q6",
+              type: "written",
+              prompt: "Every workstation in the new robotics lab is ____________ high-precision soldering irons and digital oscilloscopes.",
+              hint: "Pista: Escribe la expresión de dos palabras del banco de vocabulario.",
+              placeholder: "Escribe la expresión...",
+              accepted: ["equipped with"],
+              model: "equipped with",
+              explanation: "<strong>Equipped with</strong> significa equipado con o dotado de determinadas herramientas."
+            },
+            {
+              id: "b3_q7",
+              type: "written",
+              prompt: "When trekking across remote valleys without mobile coverage, carrying a satellite messaging ____________ can be vital in an emergency.",
+              hint: "Pista: Escribe una palabra del banco de vocabulario.",
+              placeholder: "Escribe la palabra...",
+              accepted: ["device"],
+              model: "device",
+              explanation: "<strong>Device</strong> significa dispositivo o aparato electrónico."
+            },
+            {
+              id: "b3_q8",
+              type: "written",
+              prompt: "All the seats for Friday's robotics workshop are taken, so there is very little ____________ of getting a place on the waiting list.",
+              hint: "Pista: Escribe una palabra del banco de vocabulario.",
+              placeholder: "Escribe la palabra...",
+              accepted: ["chance"],
+              model: "chance",
+              explanation: "<strong>Chance</strong> significa aquí posibilidad o probabilidad (<em>very little chance of...</em>)."
+            }
+          ]
+        },
+        {
+          id: "block-4",
+          shortTitle: "4. Future Cont. & Perfect",
+          title: "Bloque 4: Future Continuous y Future Perfect Simple",
+          duration: "12 min",
+          summary: "Completar oraciones y reformular manteniendo el sentido original.",
+          instruction: "Usa el Future Continuous (will be + -ing) para acciones en curso en un momento futuro y el Future Perfect Simple (will have + participio) para acciones ya completadas antes de un momento futuro.",
+          questions: [
+            {
+              id: "b4_q1",
+              type: "written",
+              prompt: "By 9:00 pm tonight, the technicians ________________________ (install) the new fibre-optic router, so our internet will be working again.",
+              hint: "Completa el hueco conjugando el verbo entre paréntesis.",
+              placeholder: "Forma verbal...",
+              accepted: ["will have installed", "'ll have installed"],
+              model: "will have installed",
+              explanation: "<strong>By 9:00 pm tonight</strong> indica una acción ya terminada antes de esa hora → <strong>Future Perfect Simple</strong>."
+            },
+            {
+              id: "b4_q2",
+              type: "written",
+              prompt: "Don't phone Daniel between 4:00 and 5:30 tomorrow afternoon because he ________________________ (attend) an online coding seminar.",
+              hint: "Completa el hueco conjugando el verbo entre paréntesis.",
+              placeholder: "Forma verbal...",
+              accepted: ["will be attending", "'ll be attending"],
+              model: "will be attending",
+              explanation: "Una acción en pleno desarrollo durante una franja horaria futura → <strong>Future Continuous</strong>."
+            },
+            {
+              id: "b4_q3",
+              type: "written",
+              prompt: "I ________________________ (not finish) my history essay before dinner, so I'll have to work on it for another hour afterwards.",
+              hint: "Completa en forma negativa usando el verbo entre paréntesis.",
+              placeholder: "Forma verbal negativa...",
+              accepted: ["will not have finished", "won't have finished", "'ll not have finished"],
+              model: "won't have finished (will not have finished)",
+              explanation: "Acción que no habrá concluido antes de un punto futuro (<em>before dinner</em>) → <strong>Future Perfect Simple negativo</strong>."
+            },
+            {
+              id: "b4_q4",
+              type: "written",
+              prompt: "This time next Saturday, we ________________________ (cycle) along the coastal path in Asturias.",
+              hint: "Completa el hueco conjugando el verbo entre paréntesis.",
+              placeholder: "Forma verbal...",
+              accepted: ["will be cycling", "'ll be cycling"],
+              model: "will be cycling",
+              explanation: "<strong>This time next Saturday</strong> señala una acción en progreso en ese momento → <strong>Future Continuous</strong>."
+            },
+            {
+              id: "b4_q5",
+              type: "written",
+              prompt: "________________________ (the jury / announce) the winners of the short-film festival by midnight?",
+              hint: "Escribe la pregunta completa incluyendo sujeto y verbo.",
+              placeholder: "Will + sujeto + ...",
+              accepted: ["will the jury have announced"],
+              model: "Will the jury have announced",
+              explanation: "Pregunta sobre una acción completada antes de medianoche (<em>by midnight</em>) → <strong>Will + sujeto + have + participio</strong>."
+            },
+            {
+              id: "b4_q6",
+              type: "written",
+              prompt: "We ________________________ (not use) the chemistry laboratory tomorrow morning, so Year 10 can hold their practical session there.",
+              hint: "Completa en forma negativa usando el verbo entre paréntesis.",
+              placeholder: "Forma verbal negativa...",
+              accepted: ["will not be using", "won't be using", "'ll not be using"],
+              model: "won't be using (will not be using)",
+              explanation: "Acción en curso (o ausencia de ella) durante un periodo futuro → <strong>Future Continuous negativo</strong>."
+            },
+            {
+              id: "b4_q7",
+              type: "written",
+              originalSentence: "The builders started renovating the school library last month, and they will finish the work next Friday.",
+              prompt: "Reformula: \"By next Saturday, the builders ________________________ (complete) the renovation of the school library.\"",
+              hint: "Completa únicamente la forma verbal correspondiente.",
+              placeholder: "Forma verbal...",
+              accepted: ["will have completed", "'ll have completed"],
+              model: "will have completed",
+              explanation: "Si terminan el viernes, para el sábado (<em>By next Saturday</em>) la obra ya estará acabada → <strong>Future Perfect Simple</strong>."
+            },
+            {
+              id: "b4_q8",
+              type: "written",
+              originalSentence: "Our ferry crosses the strait between 10:00 and 11:30 tomorrow morning.",
+              prompt: "Reformula: \"At 10:45 tomorrow morning, we ________________________ (sail) across the strait.\"",
+              hint: "Completa únicamente la forma verbal correspondiente.",
+              placeholder: "Forma verbal...",
+              accepted: ["will be sailing", "'ll be sailing"],
+              model: "will be sailing",
+              explanation: "A las 10:45 estaremos en medio de la travesía (10:00–11:30) → <strong>Future Continuous</strong>."
+            },
+            {
+              id: "b4_q9",
+              type: "written",
+              originalSentence: "The orchestra will be halfway through their rehearsal when the guest conductor arrives at 7:00 pm.",
+              prompt: "Reformula: \"By the time the guest conductor arrives at 7:00 pm, the orchestra ________________________ (begin) their rehearsal.\"",
+              hint: "Cuidado con el participio irregular de begin.",
+              placeholder: "Forma verbal...",
+              accepted: ["will have begun", "'ll have begun"],
+              model: "will have begun",
+              explanation: "<strong>By the time + Present Simple</strong> introduce un límite futuro antes del cual ocurre la acción → <strong>Future Perfect Simple</strong> (<em>begun</em>)."
+            },
+            {
+              id: "b4_q10",
+              type: "written",
+              originalSentence: "Leo plans to read all six chapters of the sociology textbook before Monday's seminar.",
+              prompt: "Reformula: \"Leo ________________________ (read) all six chapters of the sociology textbook by Monday's seminar.\"",
+              hint: "Completa únicamente la forma verbal correspondiente.",
+              placeholder: "Forma verbal...",
+              accepted: ["will have read", "'ll have read"],
+              model: "will have read",
+              explanation: "Acción completada antes de un evento futuro (<em>by Monday's seminar</em>) → <strong>Future Perfect Simple</strong>."
+            },
+            {
+              id: "b4_q11",
+              type: "written",
+              originalSentence: "The robotics team has scheduled a four-hour testing session tomorrow from 3:00 pm to 7:00 pm.",
+              prompt: "Reformula: \"At 5:00 pm tomorrow, the robotics team ________________________ (test) their prototype.\"",
+              hint: "Completa únicamente la forma verbal correspondiente.",
+              placeholder: "Forma verbal...",
+              accepted: ["will be testing", "'ll be testing"],
+              model: "will be testing",
+              explanation: "A las 5:00 pm estarán en plena sesión de pruebas (3:00–7:00 pm) → <strong>Future Continuous</strong>."
+            }
+          ]
+        },
+        {
+          id: "block-5",
+          shortTitle: "5. Repaso mixto de futuro",
+          title: "Bloque 5: Repaso mixto de formas de futuro",
+          duration: "7 min",
+          summary: "Contraste entre will, be going to, present continuous, present simple, future continuous y future perfect.",
+          instruction: "Analiza las pistas temporales y el significado (decisión espontánea, horario, plan confirmado, predicción con evidencia o acción en curso) para elegir o escribir la forma correcta.",
+          questions: [
+            {
+              id: "b5_q1",
+              type: "mc",
+              prompt: "\"My backpack is so heavy that the strap is about to snap!\" — \"Hold on, I _______ half of those textbooks for you.\"",
+              options: ["'ll carry", "'m carrying", "carry", "'ll have carried"],
+              answer: "'ll carry",
+              explanation: "<strong>Will ('ll carry)</strong> se emplea para ofrecimientos y decisiones espontáneas en el momento de hablar."
+            },
+            {
+              id: "b5_q2",
+              type: "mc",
+              prompt: "According to the official festival programme, the opening keynote lecture _______ at 10:15 tomorrow morning in the main auditorium.",
+              options: ["begins", "will have begun", "is going to begin", "is beginning"],
+              answer: "begins",
+              explanation: "El <strong>Present Simple</strong> expresa futuro cuando hablamos de horarios oficiales, programas o transportes."
+            },
+            {
+              id: "b5_q3",
+              type: "mc",
+              prompt: "Look at the scoreboard—our team is ahead by twenty points with only thirty seconds left! We _______ the regional championship!",
+              options: ["are going to win", "win", "will be winning", "will have won"],
+              answer: "are going to win",
+              explanation: "<strong>Be going to</strong> expresa una predicción basada en una evidencia presente clara y visible."
+            },
+            {
+              id: "b5_q4",
+              type: "mc",
+              prompt: "We've already booked the studio and confirmed with the sound engineer: we _______ our first podcast episode next Wednesday at 5:00 pm.",
+              options: ["are recording", "record", "will record", "will have recorded"],
+              answer: "are recording",
+              explanation: "El <strong>Present Continuous</strong> se usa para planes personales ya cerrados y confirmados con fecha y hora."
+            },
+            {
+              id: "b5_q5",
+              type: "mc",
+              prompt: "Scientists believe that within the next thirty years, renewable micro-grids _______ fossil-fuel power stations in most islands.",
+              options: ["will replace", "replace", "are replacing", "will be replacing"],
+              answer: "will replace",
+              explanation: "Tras expresiones de opinión o creencia (<em>Scientists believe, I think</em>) se utiliza <strong>will</strong> para predicciones."
+            },
+            {
+              id: "b5_q6",
+              type: "written",
+              prompt: "Hurry up! The last regional train to Toledo ________________________ (depart) from platform 4 at 21:40.",
+              hint: "Escribe la forma verbal adecuada según el horario oficial.",
+              placeholder: "Forma verbal...",
+              accepted: ["departs"],
+              model: "departs",
+              explanation: "Horario fijo de tren → <strong>Present Simple</strong> con valor de futuro (<strong>departs</strong>)."
+            },
+            {
+              id: "b5_q7",
+              type: "written",
+              prompt: "Nadia has already bought the paint and brushes because she ________________________ (redecorate) her bedroom this weekend.",
+              hint: "Escribe la forma verbal adecuada para una intención previa con preparativos.",
+              placeholder: "Forma verbal...",
+              accepted: ["is going to redecorate", "'s going to redecorate"],
+              model: "is going to redecorate",
+              explanation: "Intención previa respaldada por preparativos → <strong>be going to</strong> (<strong>is going to redecorate</strong>)."
+            },
+            {
+              id: "b5_q8",
+              type: "written",
+              prompt: "Don't call me at 8:30 tonight because I ________________________ (watch) the live astronomy broadcast with my sister.",
+              hint: "Escribe la forma verbal adecuada para una acción en desarrollo a esa hora.",
+              placeholder: "Forma verbal...",
+              accepted: ["will be watching", "'ll be watching"],
+              model: "will be watching",
+              explanation: "Acción en curso a una hora concreta del futuro (<em>at 8:30 tonight</em>) → <strong>Future Continuous</strong>."
+            }
+          ]
+        }
+      ];
+
+      const TOTAL_QUESTIONS = BLOCKS.reduce((acc, b) => acc + b.questions.length, 0);
+
+      const state = {
+        studentName: "",
+        studentGroup: "1.º Bachillerato",
+        screen: "welcome",
+        currentBlockIndex: 0,
+        retryMode: false,
+        retryIds: new Set(),
+        answers: {},
+        timerSeconds: 40 * 60,
+        timerRunning: false,
+        timerExpired: false,
+        resetConfirmPending: false
+      };
+
+      let timerInterval = null;
+
+      function normalizeAnswer(raw) {
+        return String(raw || "")
+          .trim()
+          .toLowerCase()
+          .replace(/[’‘`]/g, "'")
+          .replace(/[.,!?;:]+$/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function evaluateQuestion(q, userValue) {
+        const normUser = normalizeAnswer(userValue);
+        if (!normUser) return false;
+        if (q.type === "mc") {
+          return normUser === normalizeAnswer(q.answer);
+        }
+        return q.accepted.some((acc) => normalizeAnswer(acc) === normUser);
+      }
+
+      function getStats() {
+        let answered = 0;
+        let correct = 0;
+        let incorrectIds = [];
+
+        BLOCKS.forEach((b) => {
+          b.questions.forEach((q) => {
+            const entry = state.answers[q.id];
+            if (entry && entry.checked) {
+              answered++;
+              if (entry.isCorrect) {
+                correct++;
+              } else {
+                incorrectIds.push(q.id);
+              }
+            }
+          });
+        });
+
+        return { answered, correct, incorrectIds };
+      }
+
+      function formatTime(totalSec) {
+        const mins = Math.floor(totalSec / 60);
+        const secs = totalSec % 60;
+        return String(mins).padStart(2, "0") + ":" + String(secs).padStart(2, "0");
+      }
+
+      function updateTimerUI() {
+        const displayEl = document.getElementById("timer-display");
+        const pillEl = document.getElementById("timer-pill");
+        const toggleBtn = document.getElementById("timer-toggle-btn");
+
+        if (state.timerExpired) {
+          displayEl.textContent = "00:00 · Tiempo orientativo completado";
+          pillEl.classList.add("timer-ended");
+          toggleBtn.classList.add("hidden");
+          return;
+        }
+
+        pillEl.classList.remove("timer-ended");
+        toggleBtn.classList.remove("hidden");
+        displayEl.textContent = formatTime(state.timerSeconds);
+        toggleBtn.textContent = state.timerRunning ? "Pausar" : "Reanudar";
+      }
+
+      function startTimer() {
+        if (timerInterval || state.timerExpired) return;
+        state.timerRunning = true;
+        updateTimerUI();
+        timerInterval = setInterval(() => {
+          if (!state.timerRunning) return;
+          if (state.timerSeconds > 0) {
+            state.timerSeconds--;
+            updateTimerUI();
+          } else {
+            state.timerExpired = true;
+            state.timerRunning = false;
+            clearInterval(timerInterval);
+            timerInterval = null;
+            updateTimerUI();
+          }
+        }, 1000);
+      }
+
+      function toggleTimer() {
+        if (state.timerExpired) return;
+        state.timerRunning = !state.timerRunning;
+        updateTimerUI();
+      }
+
+      function updateGlobalProgress() {
+        const { answered, correct } = getStats();
+        const pct = Math.round((answered / TOTAL_QUESTIONS) * 100);
+        document.getElementById("progress-label").textContent =
+          `Progreso: ${answered} / ${TOTAL_QUESTIONS} respondidas (${pct}%)`;
+        document.getElementById("score-live-label").textContent =
+          `Aciertos: ${correct}`;
+        document.getElementById("progress-fill").style.width = `${pct}%`;
+      }
+
+      function renderWelcomeOverview() {
+        const container = document.getElementById("welcome-blocks-overview");
+        container.innerHTML = BLOCKS.map((b, idx) => `
+          <div class="overview-item">
+            <div>
+              <div class="overview-item-top">
+                <span class="block-num-tag">Bloque ${idx + 1} · ${b.questions.length} ítems</span>
+                <span class="time-tag">~${b.duration}</span>
+              </div>
+              <h3>${b.title.replace(/^Bloque \d+:\s*/, "")}</h3>
+              <p>${b.summary}</p>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      function renderBlockTabs() {
+        const tabsEl = document.getElementById("block-tabs");
+        tabsEl.innerHTML = BLOCKS.map((b, idx) => {
+          const visibleQs = state.retryMode
+            ? b.questions.filter((q) => state.retryIds.has(q.id))
+            : b.questions;
+
+          const checkedCount = visibleQs.filter((q) => state.answers[q.id]?.checked).length;
+          const isActive = idx === state.currentBlockIndex;
+
+          return `
+            <button
+              type="button"
+              class="block-tab ${isActive ? "active" : ""}"
+              data-block-idx="${idx}"
+              aria-current="${isActive ? "step" : "false"}"
+            >
+              <div class="block-tab-header">
+                <span>~${b.duration}</span>
+                <span>${checkedCount}/${visibleQs.length}</span>
+              </div>
+              <div class="block-tab-title">${b.shortTitle}</div>
+            </button>
+          `;
+        }).join("");
+
+        tabsEl.querySelectorAll(".block-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            state.currentBlockIndex = Number(btn.dataset.blockIdx);
+            renderPracticeScreen();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        });
+      }
+
+      function renderPracticeScreen() {
+        const block = BLOCKS[state.currentBlockIndex];
+
+        const retryBanner = document.getElementById("retry-banner");
+        if (state.retryMode) {
+          retryBanner.classList.remove("hidden");
+          document.getElementById("retry-banner-text").textContent =
+            `Modo de repaso: corrigiendo ${state.retryIds.size} pregunta(s) marcada(s) como incorrecta(s).`;
+        } else {
+          retryBanner.classList.add("hidden");
+        }
+
+        renderBlockTabs();
+
+        const headerCard = document.getElementById("block-header-card");
+        const wordBankHTML = block.wordBank
+          ? `
+            <div class="word-bank">
+              <span class="word-bank-label">${block.wordBankLabel || "Banco de palabras"}</span>
+              <div class="word-chips">
+                ${block.wordBank.map((w) => `<span class="word-chip">${w}</span>`).join("")}
+              </div>
+            </div>
+          `
+          : "";
+
+        headerCard.innerHTML = `
+          <div class="block-header-top">
+            <span class="block-num-tag">Bloque ${state.currentBlockIndex + 1} de ${BLOCKS.length}</span>
+            <span class="time-tag">Duración orientativa: ~${block.duration}</span>
+          </div>
+          <h2>${block.title}</h2>
+          <p class="block-instruction">${block.instruction}</p>
+          ${wordBankHTML}
+        `;
+
+        const qListEl = document.getElementById("questions-list");
+        const questionsToShow = state.retryMode
+          ? block.questions
+              .map((q, originalIdx) => ({ q, originalIdx }))
+              .filter(({ q }) => state.retryIds.has(q.id))
+          : block.questions.map((q, originalIdx) => ({ q, originalIdx }));
+
+        if (questionsToShow.length === 0) {
+          qListEl.innerHTML = `
+            <div class="question-card" style="text-align:center; padding: 28px 20px;">
+              <p style="margin:0 0 12px; font-weight:600; color: var(--success);">
+                No quedan preguntas pendientes de corregir en este bloque.
+              </p>
+              <p style="margin:0; font-size:0.92rem; color: var(--text-muted);">
+                Puedes cambiar a otro bloque desde las pestañas superiores o volver a todos los ejercicios.
+              </p>
+            </div>
+          `;
+        } else {
+          qListEl.innerHTML = questionsToShow
+            .map(({ q, originalIdx }) => renderQuestionCardHTML(q, originalIdx + 1))
+            .join("");
+          attachQuestionListeners(qListEl);
+        }
+
+        const prevBtn = document.getElementById("btn-prev-block");
+        const nextBtn = document.getElementById("btn-next-block");
+
+        prevBtn.disabled = state.currentBlockIndex === 0;
+        if (state.currentBlockIndex === BLOCKS.length - 1) {
+          nextBtn.textContent = "Ver resultados finales →";
+        } else {
+          nextBtn.textContent = "Siguiente bloque →";
+        }
+      }
+
+      function renderQuestionCardHTML(q, displayNum) {
+        const entry = state.answers[q.id] || { userValue: "", checked: false, isCorrect: false };
+        const stateClass = entry.checked
+          ? entry.isCorrect
+            ? "state-correct"
+            : "state-incorrect"
+          : "";
+
+        const typeLabel = q.type === "mc" ? "Selección múltiple" : "Respuesta escrita";
+        const origHTML = q.originalSentence
+          ? `<div class="q-original-sentence"><strong>Oración original:</strong> ${q.originalSentence}</div>`
+          : "";
+        const hintHTML = q.hint ? `<div class="q-hint">${q.hint}</div>` : "";
+
+        let interactionHTML = "";
+        if (q.type === "mc") {
+          const letters = ["A", "B", "C", "D"];
+          interactionHTML = `
+            <div class="mc-options" role="group" aria-label="Opciones de respuesta">
+              ${q.options
+                .map((opt, idx) => {
+                  const isSelected = normalizeAnswer(entry.userValue) === normalizeAnswer(opt);
+                  let optClass = isSelected ? "selected" : "";
+                  if (entry.checked) {
+                    if (normalizeAnswer(opt) === normalizeAnswer(q.answer)) {
+                      optClass = "opt-correct";
+                    } else if (isSelected && !entry.isCorrect) {
+                      optClass = "opt-incorrect";
+                    }
+                  }
+                  return `
+                    <button
+                      type="button"
+                      class="mc-option ${optClass}"
+                      data-qid="${q.id}"
+                      data-opt="${opt.replace(/"/g, "&quot;")}"
+                    >
+                      <span class="mc-letter">${letters[idx]}</span>
+                      <span>${opt}</span>
+                    </button>
+                  `;
+                })
+                .join("")}
+            </div>
+            <div class="question-actions">
+              <button type="button" class="btn btn-primary btn-sm btn-check-q" data-qid="${q.id}">
+                Comprobar respuesta
+              </button>
+            </div>
+          `;
+        } else {
+          const inputStateClass = entry.checked
+            ? entry.isCorrect
+              ? "input-correct"
+              : "input-incorrect"
+            : "";
+
+          interactionHTML = `
+            <div class="written-row">
+              <input
+                type="text"
+                class="text-input ${inputStateClass}"
+                data-qid="${q.id}"
+                value="${(entry.userValue || "").replace(/"/g, "&quot;")}"
+                placeholder="${q.placeholder || "Escribe tu respuesta..."}"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+              />
+              <button type="button" class="btn btn-primary btn-check-q" data-qid="${q.id}">
+                Comprobar
+              </button>
+            </div>
+          `;
+        }
+
+        let feedbackHTML = "";
+        if (entry.checked) {
+          if (entry.isCorrect) {
+            feedbackHTML = `
+              <div class="feedback-box correct">
+                <span class="feedback-title">✓ ¡Correcto!</span>
+                ${q.type === "written" ? `<div>Respuesta modelo: <span class="model-answer">${q.model}</span></div>` : ""}
+                <div>${q.explanation}</div>
+              </div>
+            `;
+          } else {
+            const correctDisplay = q.type === "mc" ? q.answer : q.model;
+            feedbackHTML = `
+              <div class="feedback-box incorrect">
+                <span class="feedback-title">✕ Respuesta incorrecta</span>
+                <div>Respuesta modelo: <span class="model-answer">${correctDisplay}</span></div>
+                <div>${q.explanation}</div>
+              </div>
+            `;
+          }
+        }
+
+        return `
+          <article class="question-card ${stateClass}" id="card-${q.id}">
+            <div class="question-meta">
+              <span class="q-number">Pregunta ${displayNum}</span>
+              <span class="q-type-tag">${typeLabel}</span>
+            </div>
+            ${origHTML}
+            <p class="q-prompt">${q.prompt}</p>
+            ${hintHTML}
+            ${interactionHTML}
+            ${feedbackHTML}
+          </article>
+        `;
+      }
+
+      function findQuestionById(qId) {
+        for (const b of BLOCKS) {
+          for (const q of b.questions) {
+            if (q.id === qId) return q;
+          }
+        }
+        return null;
+      }
+
+      function checkSingleQuestion(qId) {
+        const q = findQuestionById(qId);
+        if (!q) return;
+        const current = state.answers[qId] || { userValue: "", checked: false, isCorrect: false };
+
+        if (!normalizeAnswer(current.userValue)) {
+          const inputEl = document.querySelector(`.text-input[data-qid="${qId}"]`);
+          if (inputEl) {
+            inputEl.focus();
+            inputEl.style.borderColor = "var(--warning)";
+            setTimeout(() => {
+              inputEl.style.borderColor = "";
+            }, 900);
+          }
+          return;
+        }
+
+        const isCorrect = evaluateQuestion(q, current.userValue);
+        state.answers[qId] = {
+          userValue: current.userValue,
+          checked: true,
+          isCorrect
+        };
+
+        if (state.retryMode && isCorrect) {
+          state.retryIds.delete(qId);
+        }
+
+        updateGlobalProgress();
+        renderPracticeScreen();
+      }
+
+      function attachQuestionListeners(container) {
+        container.querySelectorAll(".mc-option").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const qId = btn.dataset.qid;
+            const optVal = btn.dataset.opt;
+            state.answers[qId] = {
+              userValue: optVal,
+              checked: false,
+              isCorrect: false
+            };
+            renderPracticeScreen();
+          });
+        });
+
+        container.querySelectorAll(".text-input").forEach((input) => {
+          input.addEventListener("input", () => {
+            const qId = input.dataset.qid;
+            state.answers[qId] = {
+              userValue: input.value,
+              checked: false,
+              isCorrect: false
+            };
+          });
+
+          input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              checkSingleQuestion(input.dataset.qid);
+            }
+          });
+        });
+
+        container.querySelectorAll(".btn-check-q").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            checkSingleQuestion(btn.dataset.qid);
+          });
+        });
+      }
+
+      function checkCurrentBlock() {
+        const block = BLOCKS[state.currentBlockIndex];
+        let anyChecked = false;
+        block.questions.forEach((q) => {
+          if (state.retryMode && !state.retryIds.has(q.id)) return;
+          const entry = state.answers[q.id];
+          if (entry && normalizeAnswer(entry.userValue)) {
+            const isCorrect = evaluateQuestion(q, entry.userValue);
+            state.answers[q.id] = {
+              userValue: entry.userValue,
+              checked: true,
+              isCorrect
+            };
+            if (state.retryMode && isCorrect) {
+              state.retryIds.delete(q.id);
+            }
+            anyChecked = true;
+          }
+        });
+
+        if (anyChecked) {
+          updateGlobalProgress();
+          renderPracticeScreen();
+        }
+      }
+
+      function renderResultsScreen() {
+        const { answered, correct, incorrectIds } = getStats();
+        const pct = Math.round((correct / TOTAL_QUESTIONS) * 100);
+        const grade10 = ((correct / TOTAL_QUESTIONS) * 10).toFixed(1).replace(".", ",");
+
+        document.getElementById("results-student-display").textContent =
+          state.studentName ? `Resumen de práctica: ${state.studentName}` : "Resumen de tu práctica";
+
+        document.getElementById("results-group-display").textContent =
+          state.studentGroup ? `Curso / Grupo: ${state.studentGroup}` : "";
+
+        document.getElementById("final-score-main").textContent = `${correct} / ${TOTAL_QUESTIONS}`;
+        document.getElementById("final-score-sub").textContent =
+          `${pct}% · Nota orientativa: ${grade10} / 10`;
+
+        const elapsedSec = 40 * 60 - state.timerSeconds;
+        const elapsedMin = Math.max(1, Math.round(elapsedSec / 60));
+        document.getElementById("results-subtitle").textContent =
+          `Has respondido ${answered} de ${TOTAL_QUESTIONS} preguntas (tiempo empleado aprox.: ${elapsedMin} min).`;
+
+        const tbody = document.getElementById("results-table-body");
+        tbody.innerHTML = BLOCKS.map((b, idx) => {
+          const bTotal = b.questions.length;
+          const bCorrect = b.questions.filter(
+            (q) => state.answers[q.id]?.checked && state.answers[q.id]?.isCorrect
+          ).length;
+          const bPct = Math.round((bCorrect / bTotal) * 100);
+
+          return `
+            <tr>
+              <td><strong>${b.title}</strong></td>
+              <td>${bCorrect} / ${bTotal}</td>
+              <td>
+                <div class="mini-bar"><div class="mini-bar-fill" style="width:${bPct}%"></div></div>
+                <strong>${bPct}%</strong>
+              </td>
+              <td>
+                <button type="button" class="btn btn-secondary btn-sm btn-jump-block" data-bidx="${idx}">
+                  Ir al bloque
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join("");
+
+        tbody.querySelectorAll(".btn-jump-block").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            state.retryMode = false;
+            state.currentBlockIndex = Number(btn.dataset.bidx);
+            switchScreen("practice");
+          });
+        });
+
+        const retryBtn = document.getElementById("btn-retry-incorrect");
+        if (incorrectIds.length > 0) {
+          retryBtn.classList.remove("hidden");
+          retryBtn.textContent = `Repetir preguntas incorrectas (${incorrectIds.length})`;
+        } else {
+          retryBtn.classList.add("hidden");
+        }
+      }
+
+      function switchScreen(target) {
+        state.screen = target;
+        document.getElementById("screen-welcome").classList.toggle("hidden", target !== "welcome");
+        document.getElementById("screen-practice").classList.toggle("hidden", target !== "practice");
+        document.getElementById("screen-results").classList.toggle("hidden", target !== "results");
+
+        // Topbar student badge update
+        const topbarBadge = document.getElementById("topbar-student-badge");
+        const topbarName = document.getElementById("topbar-student-name");
+        if (target !== "welcome" && state.studentName) {
+          topbarName.textContent = state.studentName;
+          topbarBadge.classList.remove("hidden");
+        } else {
+          topbarBadge.classList.add("hidden");
+        }
+
+        if (target === "practice") {
+          startTimer();
+          renderPracticeScreen();
+        } else if (target === "results") {
+          renderResultsScreen();
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function updatePrintWorksheetHeader() {
+        const nameField = document.getElementById("print-field-name");
+        const classField = document.getElementById("print-field-class");
+
+        if (nameField) {
+          nameField.textContent = state.studentName || "___________________________________________";
+        }
+        if (classField) {
+          classField.textContent = state.studentGroup || "_________";
+        }
+      }
+
+      function buildPrintWorksheet() {
+        const printRoot = document.getElementById("print-worksheet");
+        const letters = ["A", "B", "C", "D"];
+
+        const blocksHTML = BLOCKS.map((b) => {
+          const bankHTML = b.wordBank
+            ? `<div class="print-wordbank">${b.wordBankLabel || "Word bank"}: ${b.wordBank.join("  ·  ")}</div>`
+            : "";
+
+          const qsHTML = b.questions
+            .map((q, idx) => {
+              const cleanPrompt = q.prompt.replace(/_{4,}/g, "____________________");
+              const origLine = q.originalSentence
+                ? `<div class="print-q-orig">Original: ${q.originalSentence}</div>`
+                : "";
+
+              if (q.type === "mc") {
+                const optsLine = q.options
+                  .map((o, oIdx) => `<span>○ <strong>${letters[oIdx]})</strong> ${o}</span>`)
+                  .join("");
+                return `
+                  <div class="print-question">
+                    <p class="print-q-text"><strong>${idx + 1}.</strong> ${cleanPrompt}</p>
+                    <div class="print-mc-row">${optsLine}</div>
+                  </div>
+                `;
+              } else {
+                return `
+                  <div class="print-question">
+                    ${origLine}
+                    <p class="print-q-text"><strong>${idx + 1}.</strong> ${cleanPrompt}</p>
+                    <div class="print-write-line"></div>
+                  </div>
+                `;
+              }
+            })
+            .join("");
+
+          return `
+            <div class="print-block">
+              <div class="print-block-header">
+                <h2>${b.title} (${b.duration})</h2>
+                <p class="print-block-inst">${b.instruction}</p>
+              </div>
+              ${bankHTML}
+              ${qsHTML}
+            </div>
+          `;
+        }).join("");
+
+        printRoot.innerHTML = `
+          <div class="print-header">
+            <div class="print-header-top">
+              <h1>ENGLISH PRACTICE WORKSHEET · UNIT 2 REVIEW</h1>
+              <span class="print-meta-tag">1.º de Bachillerato · ~40 min</span>
+            </div>
+            <div class="print-student-fields">
+              <span><strong>Name &amp; Surnames:</strong> <span id="print-field-name">${state.studentName || "___________________________________________"}</span></span>
+              <span><strong>Class:</strong> <span id="print-field-class">${state.studentGroup || "_________"}</span></span>
+              <span><strong>Date:</strong> ______________</span>
+            </div>
+          </div>
+          ${blocksHTML}
+        `;
+      }
+
+      function validateAndStartPractice() {
+        const nameInput = document.getElementById("student-name-input");
+        const groupInput = document.getElementById("student-group-input");
+        const errorMsg = document.getElementById("name-error-msg");
+
+        const enteredName = (nameInput.value || "").trim();
+        const enteredGroup = (groupInput.value || "").trim();
+
+        if (enteredName.length < 2) {
+          errorMsg.classList.remove("hidden");
+          nameInput.style.borderColor = "var(--error)";
+          nameInput.focus();
+          return false;
+        }
+
+        errorMsg.classList.add("hidden");
+        nameInput.style.borderColor = "";
+
+        state.studentName = enteredName;
+        state.studentGroup = enteredGroup || "1.º Bachillerato";
+
+        updatePrintWorksheetHeader();
+        state.retryMode = false;
+        switchScreen("practice");
+        return true;
+      }
+
+      function init() {
+        renderWelcomeOverview();
+        buildPrintWorksheet();
+        updateGlobalProgress();
+        updateTimerUI();
+
+        const nameInput = document.getElementById("student-name-input");
+        const groupInput = document.getElementById("student-group-input");
+
+        nameInput.addEventListener("input", () => {
+          if (nameInput.value.trim().length >= 2) {
+            document.getElementById("name-error-msg").classList.add("hidden");
+            nameInput.style.borderColor = "";
+          }
+        });
+
+        nameInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            validateAndStartPractice();
+          }
+        });
+
+        groupInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            validateAndStartPractice();
+          }
+        });
+
+        document.getElementById("timer-toggle-btn").addEventListener("click", toggleTimer);
+
+        document.getElementById("btn-home-nav").addEventListener("click", () => {
+          switchScreen("welcome");
+        });
+
+        document.getElementById("btn-start-practice").addEventListener("click", () => {
+          validateAndStartPractice();
+        });
+
+        document.getElementById("btn-check-block").addEventListener("click", checkCurrentBlock);
+
+        document.getElementById("btn-prev-block").addEventListener("click", () => {
+          if (state.currentBlockIndex > 0) {
+            state.currentBlockIndex--;
+            renderPracticeScreen();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        });
+
+        document.getElementById("btn-next-block").addEventListener("click", () => {
+          if (state.currentBlockIndex < BLOCKS.length - 1) {
+            state.currentBlockIndex++;
+            renderPracticeScreen();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          } else {
+            switchScreen("results");
+          }
+        });
+
+        document.getElementById("btn-retry-incorrect").addEventListener("click", () => {
+          const { incorrectIds } = getStats();
+          if (incorrectIds.length === 0) return;
+
+          state.retryIds = new Set(incorrectIds);
+          state.retryMode = true;
+
+          incorrectIds.forEach((id) => {
+            state.answers[id] = { userValue: "", checked: false, isCorrect: false };
+          });
+
+          const firstBlockWithErrors = BLOCKS.findIndex((b) =>
+            b.questions.some((q) => state.retryIds.has(q.id))
+          );
+          state.currentBlockIndex = firstBlockWithErrors >= 0 ? firstBlockWithErrors : 0;
+
+          updateGlobalProgress();
+          switchScreen("practice");
+        });
+
+        document.getElementById("btn-exit-retry").addEventListener("click", () => {
+          state.retryMode = false;
+          renderPracticeScreen();
+        });
+
+        document.getElementById("btn-back-to-blocks").addEventListener("click", () => {
+          state.retryMode = false;
+          switchScreen("practice");
+        });
+
+        document.getElementById("btn-reset-all").addEventListener("click", (e) => {
+          const btn = e.currentTarget;
+          if (!state.resetConfirmPending) {
+            state.resetConfirmPending = true;
+            btn.textContent = "¿Seguro? Pulsa de nuevo para borrar respuestas";
+            btn.classList.add("btn-warning");
+            setTimeout(() => {
+              state.resetConfirmPending = false;
+              btn.textContent = "Reiniciar toda la práctica";
+              btn.classList.remove("btn-warning");
+            }, 3500);
+            return;
+          }
+
+          state.resetConfirmPending = false;
+          btn.textContent = "Reiniciar toda la práctica";
+          btn.classList.remove("btn-warning");
+
+          state.answers = {};
+          state.retryMode = false;
+          state.retryIds.clear();
+          state.currentBlockIndex = 0;
+          state.timerSeconds = 40 * 60;
+          state.timerExpired = false;
+          updateGlobalProgress();
+          updateTimerUI();
+          switchScreen("practice");
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", init);
+    })();
+  </script>
+</body>
+</html>
